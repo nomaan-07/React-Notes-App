@@ -1,13 +1,302 @@
-body {
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: cursive, monospace;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+}
+
+button {
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 75ms ease-in 75ms;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
+button:hover {
+  filter: brightness(0.95);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.add-note {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px 10px 0;
+  height: 100vh;
+  min-width: 220px;
+}
+
+.add-note .open-form-btn {
+  transform: rotate(45deg);
+}
+
+.form__wrapper {
+  position: absolute;
+  top: 0;
+  left: 220px;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form {
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #eee;
+  border: 1px solid transparent;
+}
+
+form input {
+  border-radius: 100px;
+}
+
+form textarea {
+  resize: vertical;
+  border-radius: 20px;
+  min-height: 160px;
+}
+
+form button {
+  width: 100%;
+}
+
+.colors-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.colors-wrapper div {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.notes__wrapper {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: max-content;
+}
+
+.note__wrapper {
+  border-radius: 12px;
+  padding: 8px 8px 0;
+  position: relative;
+  width: 260px;
+  font-family: monospace, cursive;
+  overflow: hidden;
+}
+.note__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+.note__overlay div {
+  display: flex;
+  justify-content: end;
+  padding: 6px;
+}
+
+.note__overlay .icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+.note__overlay .icon:hover {
+  color: #db2d2d;
+}
+
+.note__menu {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 2px 0;
+  width: max-content;
+}
+
+.note__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 150ms ease 75ms;
+  padding: 6px;
+  cursor: pointer;
+  width: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.note__menu-item:hover {
+  background-color: #fff;
+}
+.note__menu-item--aquamarine:hover {
+  color: #66cdaa;
+}
+
+.note__menu-item--slateblue:hover {
+  color: #7b68ee;
+}
+
+.note__menu-item--red:hover {
+  color: #db2d2d;
+}
+
+.note__menu-item .icon {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.note__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  border-color: inherit;
+}
+.note__wrapper h5 {
+  font-size: 18px;
+}
+
+.note__header .icon {
+  width: 20px;
+  height: 20px;
+}
+.note__header .icon:last-child {
+  cursor: pointer;
+}
+.note__header .icon:last-child:hover {
+  transform: scale(1.1);
+}
+
+.note__wrapper p {
+  margin: 10px 0;
+  min-height: 110px;
+}
+
+.note__wrapper span {
+  font-size: 12px;
+}
+
+.aquamarine,
+.hotpink,
+.slateblue,
+.navy,
+.black,
+.chocolate,
+.red {
+  color: #fff;
+  border-color: #918e8e;
+}
+
+.aquamarine::placeholder,
+.hotpink::placeholder,
+.slateblue::placeholder,
+.navy::placeholder,
+.black::placeholder,
+.chocolate::placeholder,
+.red::placeholder {
+  color: #eee;
+}
+
+.red {
+  background-color: #db2d2d;
+}
+
+.whitesmoke {
+  background-color: #f5f5f5;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.aquamarine {
+  background-color: #66cdaa;
+}
+
+.hotpink {
+  background-color: #fd4ca5;
+}
+
+.slateblue {
+  background-color: #7b68ee;
+}
+
+.navy {
+  background-color: #000080;
+}
+
+.white {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.black {
+  background-color: #000;
+}
+.gold {
+  background-color: #ffd700;
+  color: #000;
+}
+
+.chocolate {
+  background-color: #d2691e;
 }
